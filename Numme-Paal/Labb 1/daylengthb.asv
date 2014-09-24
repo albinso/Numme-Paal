@@ -6,14 +6,12 @@ T = 365;
 w = 2*pi/T;
 A = [ones(size(t')) cos(w*t') sin(w*t')];
 c = A\y';
-subplot(2, 2, 1)
+
 plot(t, y, 'g*')
 hold on
 
 f = @(t) c(1) + c(2)*cos(w*t) + c(3)*sin(w*t);
-subplot(2, 2, 2)
 plot(t, abs(f(t)-y), 'r*')
-subplot(2, 2, 1)
-t2 = 1:365;
-plot(t2, f(t2))
-
+subplot(
+t = 1:365;
+plot(t, f(t))
