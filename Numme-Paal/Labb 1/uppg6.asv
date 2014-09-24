@@ -1,18 +1,1 @@
-ffunc = @(x) 60*x - (((x.^2 + x + 0.1).^6)/((x+1).^6)) - 10*x.*exp(-x);
-hh = 10E-5;
-fprim = @(f, x) (f(x+hh) - f(x-hh))/2*hh;
-x = -0.5;
-plot(x, ffunc(x))
-
-h = 10;
-
-format compact
-while abs(h) > 1.0e-10*abs(x),
-    fval = ffunc(x)
-    fp = fprim(ffunc, x)
-    h = f/fp;
-    disp([x, f, fp h])
-    x = x-h;
-end
-format long
-x
+J = [
