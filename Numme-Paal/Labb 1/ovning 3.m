@@ -1,3 +1,6 @@
+% Noggrannhetsordning = p där h^p * konstant = trunkeringsfelet (1 för
+% front och 2 för central)
+
 % a), b)
 
 f = @(x) 60*x - (((x.^2 + x + 0.1).^6)/((x+1).^6)) - 10 * x *exp(-x);
@@ -46,3 +49,5 @@ for h=[1.E-3 1.E-4 1.E-5 1.E-6 1.E-7 1.E-8 1.E-9 1.E-10 1.E-11 1.E-12 1.E-13]
     f_prim_central_1 = fpc(1, hh)
     f_prim_front_1 = fpf(1, hh)
 end    
+
+plot(loglog(x, f(x)))
