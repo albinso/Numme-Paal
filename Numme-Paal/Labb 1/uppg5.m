@@ -7,14 +7,16 @@ x = 2;
 h = 10;
 
 format compact
-for i = 0.1:0.1:2
+for i = [0.1, 2]
     x = i;
     h = 10;
+    disp(['    h' '         x' '        f(x)'])
     while abs(h) > abs(x)*1E-6,
         fval = f(x);
         fpval = fp(x);
         h = (fval/fpval);
-        disp(h)
+        
+        disp([h x fval])
         % disp([x, fval, fpval h])
         x = x-h;
     end

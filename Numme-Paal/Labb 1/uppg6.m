@@ -8,6 +8,8 @@ delxy = @(y, z) (z.^3 - log(2)*2.^y)/3;
 delxz = @(y, z) (3*z.^2 - 2.^y)/3;
 f1n = @(y, z) f1(elx(y, z), y, z);
 f3n = @(y, z) f3(elx(y, z), y, z);
+
+% Derivator med avseende på y eller z
 df1ny = @(y, z) delxy(y, z)*cos(elx(y,z)) + 2*y;
 df1nz = @(y, z) delxz(y, z)*cos(elx(y,z)) + 1/z;
 df3ny = @(y, z) delxy(y, z)*2*elx(y, z) + 2*y;
@@ -20,22 +22,24 @@ zs = [1.8 1.9 0.3 0]
 result = []
 
 for i = 1:4
-    t = [ys(i) zs(i)]
-    while dtnorm > abs(x)*1E-6 & i < 20,
-        y = t(1)
-        z = t(2)
+    t = [ys(i) zs(i)];
+    disp(['    h' '         y     z' '        f(x)'])
+    while dtnorm > 1E-6 & i < 20, % Dålig konvergens
+        y = t(1);
+        z = t(2);
         f = [f1n(y,z);
-             f3n(y,z)]
+             f3n(y,z)];
         J = [df1ny(y,z) df1nz(y,z);
-             df3ny(y,z) df3nz(y,z)]
-        dt = -J\f
+             df3ny(y,z) df3nz(y,z)]; 
+        dt = -J\f;
         t = t+dt';
-        dtnorm = norm(dt, Inf)
-        i = i+1
+        dtnorm = norm(dt, Inf); % Felvektorns längd
+        i = i+1;
+        disp([dtnorm])
     end
-    result = [result t]
+    result = [result; t];
 end
-
+result
 i
 
 
