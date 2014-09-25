@@ -1,7 +1,7 @@
 format compact
 f1 = @(x, y, z) sin(x) + y.^2 + log(z) - 3;
 f2 = @(x, y, z) 3*x +    2.^y - z.^3;
-f3 = @(x, y, z) x.^2 +    y.^2 + z.^3 - 6
+f3 = @(x, y, z) x.^2 +    y.^2 + z.^3 - 6;
 
 elx = @(y, z) (z.^3 - 2.^y)/3;
 delxy = @(y, z) (z.^3 - log(2)*2.^y)/3;
@@ -17,14 +17,14 @@ df3nz = @(y, z) delxz(y, z)*2*elx(y, z) + 3*z.^2;
 
 i = 0;
 dtnorm = 10;
-ys = [2.5 -2 2.2 -3]
-zs = [1.8 1.9 0.3 0]
-result = []
-
-for i = 1:4
-    t = [ys(i) zs(i)];
-    disp(['    h' '         y     z' '        f(x)'])
-    while dtnorm > 1E-6 & i < 20, % Dålig konvergens
+ys = [2.5 -2 2.2 -3];
+zs = [1.8 1.9 0.3 0];
+result = [];
+disp(['    h'])
+for n = 1:4
+    t = [ys(n) zs(n)];
+     % Dålig konvergens kräver högt tak för i
+    while dtnorm > 1E-6 & i < 20,
         y = t(1);
         z = t(2);
         f = [f1n(y,z);
