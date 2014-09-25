@@ -1,6 +1,6 @@
 i = 0;
 dxnorm = 10;
-x = [[1 2 3]
+x = [1 2]
 format compact
 f1 = @(x, y, z) sin(x) + y.^2 + log(z) - 3;
 f2 = @(x, y, z) 3*x +    2.^y - z.^3;
@@ -15,20 +15,17 @@ df1ny = @(y, z) delxy(y, z)*cos(elx(y,z)) + 2*y;
 df1nz = @(y, z) delxz(y, z)*cos(elx(y,z)) + 1/z;
 df3ny = @(y, z) delxy(y, z)*2*elx(y, z) + 2*y;
 df3nz = @(y, z) delxz(y, z)*2*elx(y, z) + 3*z.^2;
+phi = @(y, z) (f1n(y, z)-3).^2 + (f3n(y, z)-6).^2
 
+[X, Y] = meshgrid([-10:0.02:10], [0:0.01:10]);
 
-
-while dxnorm > abs(x)*1E-6 & i < 20,
-        f = [f1n(x);
-             f3n(x)]
-        J = [df1ny( df1nz;
-             df2ny df2nz]
-        dx = -J\f
-        x = x+dx';
-        dxnorm = norm(dx, Inf)
-        i = i+1
-end
-disp([x(1) x(2) x(3)])
-i
-
-
+disp([x(1) x(2)]);
+i;
+hold off
+phival = phi(X, Y);
+index=(phival>1); phival(index)=inf
+% surfc(X, Y, phival)
+t = [1:100]
+surfc(X, Y ,phi(X, Y))
+%surf(X, Y, zeros(size(phival)))
+axis([-5 10 -5 9 0 0.9])
