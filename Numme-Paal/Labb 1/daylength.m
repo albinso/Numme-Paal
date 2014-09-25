@@ -6,5 +6,5 @@ f = @(x) coeffs(1)*x.^2 + coeffs(2)*x + coeffs(3);
 
 plot(x, y);
 hold on;
-x = [91:244]
+x = [91:244];
 plot(x, f(x))
