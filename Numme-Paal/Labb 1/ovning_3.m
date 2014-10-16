@@ -3,8 +3,8 @@
 
 % funktioner (f, f-prim, f-prim med centraldifferens och f-prim med
 % framåtdifferens [uppgift a) och uppgift b)]
-f = @(x) 60*x - (((x.^2 + x + 0.1).^6)/((x+1).^6)) - 10 * x *exp(-x);
-fp = @(x) 60 - 6 * (2*x + 1) * (x.^2 + x + 0.1).^5 / ((x+1).^6) + 6 * (x.^2 + x + 0.1).^6 / ((x+1).^7) + 10 * x * exp(-x) - 10 * exp(-x);
+f = @(x) 60*x - (((x.^2 + x + 0.1).^6)/((x+1).^6)) - 10 * x .*exp(-x);
+fp = @(x) 60 - 6 * (2*x + 1) * (x.^2 + x + 0.1).^5 / ((x+1).^6) + 6 * (x.^2 + x + 0.1).^6 / ((x+1).^7) + 10 * x .* exp(-x) - 10 * exp(-x);
 fpc = @(x, hh) (f(x+hh) - f(x-hh))/(2*hh);
 fpf = @(x, hh) (f(x+hh) - f(x))/(hh);
 
@@ -37,20 +37,31 @@ h=[1.E-3 1.E-4 1.E-5 1.E-6 1.E-7 1.E-8 1.E-9 1.E-10 1.E-11 1.E-12 1.E-13];
 
 % itererar över h för att generera all data
 for i = 1:11
-    diff_fpc(i) = fpc(1, h(i));
-    diff_fp(i) = fp(1);
-    diff_fpc_fp(i) = diff_fpc(i) - diff_fp(i);    
+    diff_fpc_fp_1(i) = fpc(1, h(i)) - fp(1);
+    diff_fpf_fp_1(i) = fpf(1, h(i)) - fp(1);
+    diff_fpc_fp_02(i) = fpc(0.2, h(i)) - fp(0.2);
+    diff_fpf_fp_02(i) = fpf(0.2, h(i)) - fp(0.2);
+    fpc_disp(i) = fpc(0.2, h(i));
+    fp_disp(i) = fp(0.2);
 end
 
 % skapar matrisen med all data
-M = [h; diff_fpc_fp; diff_fpc; diff_fp];
+M = [h; abs(diff_fpc_fp_02); fpc_disp; fp_disp];
 
 % skriver ut matrisen
 printmat(M', 'Test', 'Row1 Row2 Row3 Row4 Row5 Row6 Row7 Row8 Row9 Row10 Row11', 'h (fpc-fp) fpc fp')
-
 % sätter upp värden/variabler för att plotta funktionen i loglog-diagram
-xx = logspace(-1,2);
-yy = 60 .* xx - (((xx.^2 + xx + 0.1).^6)/((xx+1).^6)) - 10 .* xx .* exp(-xx);
-
+xx = logspace(-13,-3);
+%yy = 60 .* xx - (((xx.^2 + xx + 0.1).^6)/((xx+1).^6)) - 10 .* xx .* exp(-xx);
+% yy = abs(fpf(1, xx) - fp(1));
 % plottar funktionen
-loglog(xx, yy)
+yy = [];
+for a = xx
+    yy = [yy abs(fpc(1, a) - fp(1))];
+end
+hold off
+loglog(h, abs(diff_fpc_fp_1), 'r') % IMPORTANTE MUCHO
+hold on
+loglog(h, abs(diff_fpc_fp_02), 'g')
+loglog(h, abs(diff_fpf_fp_02), 'b')
+loglog(h, abs(diff_fpf_fp_1), 'c')

@@ -39,5 +39,5 @@ for x = [0.1, 2]
     x
 end
 
-felkonstant_2_e_8 = fp(2.0*1E-8)/(2 * fb(2.0*1E-8))
-felkonstant_2_2224 = fp(2.2224)/(2 * fb(2.2224))
+felkonstant_2_e_8 = fb(2.0*1E-8)/(2 * fp(2.0*1E-8))
+felkonstant_2_2224 = fb(2.2224)/(2 * fp(2.2224))

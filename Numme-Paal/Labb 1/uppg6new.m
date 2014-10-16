@@ -1,6 +1,5 @@
 
-dxnorm = 10;
-x = [1 2];
+
 format compact
 f1 = @(x, y, z) sin(x) + y.^2 + log(z) - 3;
 f2 = @(x, y, z) 3*x +    2.^y - z.^3;
@@ -16,10 +15,12 @@ f1n = @(y, z) f1(elx(y, z), y, z);
 f3n = @(y, z) f3(elx(y, z), y, z); 
 
 % Derivative of ¨f1n and f3n by y and z
-df1ny = @(y, z) delxy(y, z)*cos(elx(y,z)) + 2*y;
-df1nz = @(y, z) delxz(y, z)*cos(elx(y,z)) + 1/z;
-df3ny = @(y, z) delxy(y, z)*2*elx(y, z) + 2*y;
-df3nz = @(y, z) delxz(y, z)*2*elx(y, z) + 3*z.^2;
+% Changed to be approximated rather than analytic (less chance of error)
+h = 1E-8;
+df1ny = @(y, z) (f1n(y+h, z) - f1n(y-h, z))/(2*h); 
+df1nz = @(y, z) (f1n(y, z+h) - f1n(y, z-h))/(2*h);
+df3ny = @(y, z) (f3n(y+h, z) - f3n(y-h, z))/(2*h);
+df3nz = @(y, z) (f3n(y, z+h) - f3n(y, z-h))/(2*h);
 
 % Phi as described by assignment
 phi = @(y, z) (f1n(y, z)-3).^2 + (f3n(y, z)-6).^2;
