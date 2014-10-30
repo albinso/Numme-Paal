@@ -4,5 +4,4 @@ function res = trapets(a, b, step, symbol)
 
 res = trapetsnoextrpol(a, b, step, symbol);
 double = trapetsnoextrpol(a, b, step*2, symbol);
-res
 res = res - (double - res)/3;
