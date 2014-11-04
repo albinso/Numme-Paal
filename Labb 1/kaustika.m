@@ -32,4 +32,3 @@ end
 x = cos(phi)^3;
 plot(x, 0.64, '*')
 plot(-x, 0.64, '*')
-hold off
