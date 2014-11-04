@@ -5,7 +5,19 @@ xslut = slut(1)
 yslut = slut(2)
 
 t = t';
-k = [(xslut-t).^3, 3.*(xstart-t).*(xslut-t).^2, 3.*(xstart-t).^2.*(xslut-t), (xstart-t).^3];
+if(xslut ~= 0)
+    firstTerm = (xslut-t)/xslut;
+else
+    firstTerm = -t;
+end
+
+if(xstart ~= 0)
+    lastTerm = (xstart-t)/xstart;
+else
+    lastTerm = -t;
+end
+
+k = [(firstTerm).^3, 3.*(lastTerm).*(firstTerm).^2, 3.*(lastTerm).^2.*(firstTerm), (lastTerm).^3];
 
 p1 = [ystart];
 p2 = [yslut];
