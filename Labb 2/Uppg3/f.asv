@@ -1,0 +1,14 @@
+function res = f(u, x)
+func = @(xlocal, nextX, prevX) u(nextX) - 2*u(xlocal) + u(prevX) ...
+    - xlocal^2 * u(xlocal)*(u(xlocal)-1);
+
+start = 4; stop = 12;
+res = [u(x(3)) - 2*u(x(2)) + start - 2^2 * u(2)*(u(2)-1)];
+for i = 2:length(x)-1
+    res = [res func(x(i), x(i+1), x(i-1))];
+end
+
+res = [res  stop - 2*u(x(i)) + u(i-1) - 2^2 * u(i)*(u(i)-1)];
+
+end
+
