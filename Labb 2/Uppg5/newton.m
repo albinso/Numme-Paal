@@ -1,8 +1,11 @@
 function res = newton(u, x)
-start = 2; stop = 4; N=3; n=N-1;
-h = 1;
-x = [1:N]'*h;
+start = 2;
+stop = 4;
+N = 3;
+n = N-1;
 
+h = 1;
+x = [1 : h : N]; %[1:N]'*h;
 
 i = 0;
 dxnorm = 10;
@@ -16,13 +19,13 @@ while (dxnorm >= 1E-3) && i < 20
     %[start; u(1:n-1)]
     F = f(uu, x)
     
-    jac = minjac(@f, uu, x)
+    jac = minjac(@f, uu)
    
     
     dx = -jac\F
     dxnorm = norm(dx, inf);
-    uu = uu-dx;
-    i = i+1
+    uu = uu - dx;
+    i = i + 1
 end
 
 res = uu;
