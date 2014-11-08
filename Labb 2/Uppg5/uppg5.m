@@ -31,7 +31,7 @@ xs = [a ; h ; b]; % [1 : 3]
 
 p = @(x)x + 1; % returns x+1
 
-t = f(p, xs); % idk?
+%t = f(p, xs); % idk?
 
 n = newton(p, xs) % newton raphson -> idk
 

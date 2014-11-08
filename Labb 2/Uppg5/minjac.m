@@ -1,3 +1,5 @@
+% Fcn = funktionen
+% z = parameter till Fcn
 function jac = minjac(Fcn, z);
   NR = length(z);
   F = feval(Fcn, z);
