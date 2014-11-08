@@ -1,47 +1,26 @@
 % Detta är ett 'M'
 
-t = [0:0.05:20];
-hold on
+t = [0:0.005:1];
 
-centerX = 5; centerY = 15; width = 4; height = 6;
-rectangle('Position',[centerX - width/2, centerY - height/2, width*2, height*2],...
-    'Curvature',[1,1],...
-    'FaceColor','m');
 
-centerX = 5; centerY = 20; width = 4; height = 6;
-rectangle('Position',[centerX - width/2, centerY - height/2, width*2, height*2],...
-    'Curvature',[1,1],...
-    'FaceColor','m');
+start = [3 8];
+slut = [40 7];
+y = generalquadraticbezier(t, [5 5], [20 20], [9 20])
+y2 = generalquadraticbezier(t, [5 5], [20 20], [9, -10])
+y3 = generalcubicbezier(t, [20 20], [24 29], [21 30], [23 32])
 
-centerX = -2; centerY = 25; width = 6; height = 4;
-rectangle('Position',[centerX - width/2, centerY - height/2, width*2, height*2],...
-    'Curvature',[1,1],...
-    'FaceColor','m');
+d = 5E-3;
+for k=1:40
+    off = k*d;
+    plot(y(:,1)+off, y(:,2)+off)
+    hold on;
+    plot(y2(:,1)+off, y2(:,2)+off)
+    plot(y3(:,1)+off, y3(:,2)+off)
+end
+plot(10, 9, 'O')
+plot(30, 6, 'O')
 
-centerX = 10; centerY = 25; width = 6; height = 4;
-rectangle('Position',[centerX - width/2, centerY - height/2, width*2, height*2],...
-    'Curvature',[1,1],...
-    'FaceColor','m');
 
-centerX = -5; centerY = 20; width = 4; height = 6;
-rectangle('Position',[centerX - width/2, centerY - height/2, width*2, height*2],...
-    'Curvature',[1,1],...
-    'FaceColor','m');
 
-centerX = 15; centerY = 20; width = 4; height = 6;
-rectangle('Position',[centerX - width/2, centerY - height/2, width*2, height*2],...
-    'Curvature',[1,1],...
-    'FaceColor','m');
-
-centerX = -5; centerY = 13; width = 4; height = 6;
-rectangle('Position',[centerX - width/2, centerY - height/2, width*2, height*2],...
-    'Curvature',[1,1],...
-    'FaceColor','m');
-
-centerX = 15; centerY = 13; width = 4; height = 6;
-rectangle('Position',[centerX - width/2, centerY - height/2, width*2, height*2],...
-    'Curvature',[1,1],...
-    'FaceColor','m');
-
-axis equal
 hold off
+
