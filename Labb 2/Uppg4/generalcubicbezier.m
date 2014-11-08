@@ -6,15 +6,15 @@ yslut = slut(2)
 
 t = t';
 if(xslut ~= 0)
-    firstTerm = (xslut-t)/xslut;
+    firstTerm = (1-t/xslut);
 else
     firstTerm = -t;
 end
 
 if(xstart ~= 0)
-    lastTerm = (xstart-t)/xstart;
+    lastTerm = (1-t/xstart);
 else
-    lastTerm = -t;
+    lastTerm = t/xslut;
 end
 
 k = [(firstTerm).^3, 3.*(lastTerm).*(firstTerm).^2, 3.*(lastTerm).^2.*(firstTerm), (lastTerm).^3];
