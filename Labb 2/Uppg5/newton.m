@@ -11,7 +11,7 @@ while (dxnorm >= 1E-3) && i < 20
     %Gp = -2 - 2.*x.*u.*h^2 - x.*h^2;
     %size(u)
     %[start; u(1:n-1)]
-    F = f(u) % Beräknar f(uu)
+    F = f(u) % Beräknar f(u) som borde vara 0-värd
     jac = minjac(@f, u) %jacobian mumbo-jumbo
    
     % Standard newton-grejer
@@ -19,7 +19,7 @@ while (dxnorm >= 1E-3) && i < 20
     dxnorm = norm(dx, inf);
     size(u(:,2))
     size(u(2)-dx)
-    u(:,2) = u(:,2)-dx;
+    u(:,2) = u(:,2)+dx;
     i = i+1
 end
 
