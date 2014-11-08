@@ -5,6 +5,9 @@ i = 0;
 dxnorm = 10;
 
 %u = [x u(x)]
+
+% så länge normen är större än en tusendel samt mindre än 20 iterationer
+% gjorts
 while (dxnorm >= 1E-3) && i < 20
     %G = -2.*u - x.*u.*(u-1).*h^2;
     %size(G)
