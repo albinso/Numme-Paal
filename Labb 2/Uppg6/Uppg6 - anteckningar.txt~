@@ -9,7 +9,6 @@ g*h0 = gH - Lu' - Lu*|u|*fM / (2d)
 u0 = 4 * (Ah' + Qv) / (PI * d^2)
 
 -----------------------------------
-Jag har lyckats bevisa att man från u0 kan få fram h0 (och vice versa) för I. ej för II.
 
 I.
 u0 = sqrt(gH/(gC1 + C2))
