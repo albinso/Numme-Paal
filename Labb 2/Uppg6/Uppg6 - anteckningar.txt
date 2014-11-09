@@ -1,0 +1,35 @@
+= Bestäm h(t), u(t) och Qv (Qv används för att sammankoppla h och u)
+ - Beräkna h och u succesivt
+
+* Anta du/dt = 0, dh/dt = 0 för t = 0
+
+Qv = k(1 - t/tc) * sqrt(h - h*)
+
+g*h0 = gH - Lu' - Lu*|u|*fM / (2d)
+u0 = 4 * (Ah' + Qv) / (PI * d^2)
+
+-----------------------------------
+
+I.
+u0 = sqrt(gH/(gC1 + C2))
+h0 = h* + C1gH / (gC1 + C2) = h* + C1 * u0^2
+
+C1 = PI^2 * d^4 / (16k^2)
+C2 = L / (2d) * fM
+
+
+II.
+u0 = 4k * sqrt(h0 - h*) / (PI*d^2)
+h0 = (gH + Ch*) / (g + C)
+
+C = 8Lk^2 * fM / (PI^2 * d^5) = C2 / C1
+
+
+----------------------------------------------------------------
+
+h0 = h(0) => h0 = gH - Lu' - Lu*|u|*fM / (g*2d)
+h0 = (gH + Ch*) / (g + C)
+C1 * h0 = (C1gH + C2h*) / (C1g + C2)
+
+u0 = u(0) => u0 = 4Qv / (PI * d^2) = 4k * sqrt(h0 - h*) / (PI * d^2)
+u0^2 = 16k^2(h0 - h*) / (PI^2 * d^4)

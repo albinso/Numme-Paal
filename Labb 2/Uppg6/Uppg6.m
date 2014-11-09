@@ -58,16 +58,27 @@
 % -------------------------------
 
 % u(t) - sambandet gäller
-% L(du/dt) = g(H − h) − 1/2*f_M * L/d * u*|u|
+% du/dt = 0 vid t = 0
+% u = (A(dh/dt) + Q_v) / (π * d^2 / 4)
+% u = (A(dh/dt) + Q_v) / (3.14 * 0.09)
+
+% L*(du/dt) = g*(H − h) − 1/2*f_M * L/d * u*|u|
+% 600 * u' = 9.81 * (30 - h) - 0.012 * 600/0.6 * u * |u|
 
 % h(t)
+% dh/dt = 0 vid t = 0
 H = 30
 L = 600
 d = 0.6
-% A
+
+% A     - prova A=1, 2, 4,10 m2.
+
 g = 9.81
 fM = 0.024
-% Qv
+
+% Qv = k(1 − t/tc) * √(h − h^*)     -  0 ≤ t ≤ tc
+% Qv = 1.05 * (1 - t/5) * sqrt(h - 20)
+
 k = 1.05
 hstar = 20
 tc = 5
