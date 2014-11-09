@@ -21,7 +21,7 @@ hold on;
 %xs = [1:3];
 
 
-n = newton([1 2 3; 1 1 4]')
+n = newton([1 2 3; 1 15 4]')
 n;
 %p(n);
 %f([xs; p(xs)])
