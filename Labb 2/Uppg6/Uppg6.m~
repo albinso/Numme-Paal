@@ -51,7 +51,7 @@
 % Qv = ksqrt(h − h^*), t ≤ 0
 %       k(1 − t/tc) * sqrt(h − h^*), 0 ≤ t ≤ tc
 %       0, t ≥ tc
-
+    
 % Redovisa grafer över h och u för de olika A-värden. Lägg gärna graferna
 % i samma figur.
 

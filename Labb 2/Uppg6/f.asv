@@ -1,6 +1,0 @@
-function res = f(t, y)
-global hstar; global tc; global k; global A; global L; global C1; global g;
-global H;
-[(sqrt(C1)*y(2)-Qv(t, y(1)))/A  g*(H-y(1))-
-end
-
