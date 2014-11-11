@@ -17,13 +17,23 @@
 % Initiation
 %-----------------------------------------------------
 hold on;
-%p = @(x)x + 1;
-%xs = [1:3];
+p = @(xi)xi + 1.25;
+xs = [1:0.005:3]';
 
 
-n = newton([1 2 3; 1 15 4]')
+
+
+global x;
+global start; global stop;
+global h;
+start=2; stop=4;
+x = xs(2:end-1);
+
+u = p(x)
+h = (x(end)-x(1))/length(x);
+n = newton(u)
 n;
 %p(n);
 %f([xs; p(xs)])
-plot([1:3], n');
+plot(xs, n');
 

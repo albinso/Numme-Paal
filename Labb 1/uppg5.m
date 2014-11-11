@@ -26,17 +26,17 @@ format compact
 for x = [0.1, 2]
     h = 10;
     
-    disp(['    h' '         x' '        f(x)'])
+    %disp(['    h' '         x' '        f(x)'])
     % iterar tills forandringsvärdet (h) ar mindre an en miljontedel
     % relativt x
     while abs(h/x) > 1E-7,
-        fval = f(x);
-        fpval = fp(x);
+        fval = f(x)
+        fpval = fp(x)
         h = (fval/fpval);
-        disp([h x fval])
+        %disp([h x fval])
         x = x-h;
     end
-    x
+    x;
 end
 
 felkonstant_2_e_8 = fb(2.0*1E-8)/(2 * fp(2.0*1E-8))
