@@ -15,18 +15,17 @@ xlabel('X position')
 h = 1E-1;
 targetx = endpoints(end,:,end)
 t = 12;
-dt = 10;
 xy = endpoints(1,:);
 currenty = xy(2);
 i = 0
 x = xy(1)
-while dt > 1E-5 && i < 20
-    [x, y] = ode45(f, [x y], [targetx currenty])
-    dt = -t/x;
-    t = t+dt;
+while xy(1) < targetx(1)
+    [x, y] = ode45(f, t, [targetx currenty])
+    dt = -t/deltax(x, y);
+    
     i = i+1
 end
-
+xy(1)
 t
 
 

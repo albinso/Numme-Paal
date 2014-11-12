@@ -25,11 +25,11 @@ global h;
 start=2; stop=4;
 x = xs(2:end-1); % Ta bort randvärden
 
-u = p(x)
+u = p(x);
 h = (x(end)-x(1))/length(x);
 n = newton(u);
 n;
 %p(n);
 %f([xs; p(xs)])
-plot(xs, n');
+plot(xs, n);
 
