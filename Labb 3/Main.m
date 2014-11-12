@@ -17,11 +17,12 @@ targetx = endpoints(end,:,end)
 t = 12;
 dt = 10;
 xy = endpoints(1,:);
+currentx = xy(1);
 currenty = xy(2);
 i = 0
 x = xy(1)
 while dt > 1E-5 && i < 20
-    [x, y] = ode45(f, [x y], [targetx currenty])
+    [x, y] = ode45(f, [x y], [currentx currenty])
     dt = -t/x;
     t = t+dt;
     i = i+1
