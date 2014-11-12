@@ -1,7 +1,6 @@
 function G = f(z)
 % * Funktionsbeskrivning
 % 'G' ska vara 0 när z är rätt funktion
-% ALBIN BAKLÄXA :D
 
 % * Variabelbeskrivning
 % z = alla tal i ett intervall med en viss steglängd, dock ej randvärdena
