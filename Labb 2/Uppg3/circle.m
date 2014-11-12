@@ -1,4 +1,4 @@
-function c = circle2(x, y, r)
+function c = circle(x, y, r)
 
 imageSizeX = 640;
 imageSizeY = 480;
