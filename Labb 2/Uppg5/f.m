@@ -1,18 +1,15 @@
-function res = f(u)
-% res ska vara 0 när u är rätt funktion
-size(u)
-x = u(:,1); % Alla x-värden
-u = u(:,2); % Motsvarande värden för u(x)
-N=length(x);
-h = (x(end) - x(1)) / N;
-G = @(ui, xi) -2.*ui - xi.*ui.*(ui-1).*h^2;
 
-res = [0]; % vi vet vilka randvärden u har
-size(u)
-for i = 2:length(u)-1
-    % för rätt u ska detta bli [res; 0]
-    res = [res; u(i-1) + u(i+1) + G(u(i), x(i))];
-end
-res = [res; 0]; % randvärde igen
+function G = f(z)
+% res ska vara 0 n�r u �r r�tt funktion
+global x h start stop
+N=length(z);
+
+u=[start; z; stop];
+
+%G=( y(3:N+2)-2*y(2:N+1)+y(1:N) )/h2- ...
+%sqrt(x.^2+y(2:N+1).^2 +( ( y(3:N+2)-y(1:N) )/hh ).^2);
+G = (u(3:N+2) + u(1:N) - 2*u(2:N+1))/h^2 - x.*u(2:N+1).*(u(2:N+1)-1);
+
+
 end
 
