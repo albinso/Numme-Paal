@@ -17,21 +17,17 @@
 % Initiation
 %-----------------------------------------------------
 hold on;
-p = @(xi)xi + 1.25;
+p = @(xi)xi + 1.5; % Startgissning, ger ca 6 iterationer
 xs = [1:0.005:3]';
-
-
-
-
 global x;
 global start; global stop;
 global h;
 start=2; stop=4;
-x = xs(2:end-1);
+x = xs(2:end-1); % Ta bort randvärden
 
 u = p(x)
 h = (x(end)-x(1))/length(x);
-n = newton(u)
+n = newton(u);
 n;
 %p(n);
 %f([xs; p(xs)])
