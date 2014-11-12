@@ -1,0 +1,7 @@
+function area = polygonarea(x, y)
+
+x = [x(end) x x(1)];
+y = [y(end) y y(1)];
+
+
+
