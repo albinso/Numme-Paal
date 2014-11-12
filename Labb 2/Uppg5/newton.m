@@ -1,21 +1,26 @@
 function res = newton(u)
-%start = 2; stop = 4; N=3; n=N-1;
+% * Funktionsbeskrivning
+% Newton-Raphson-metoden gjord på ett icke-linjärt ekvationssystem
 
-global x; global start; global stop;
+% Initiering
+global x;
+global start;
+global stop;
 i = 0;
 dunorm = 10;
 
+% Itererar fram resultatet för NR
 while (dunorm >= 1E-10) && i < 10
-    F = f(u); % Ber�knar f(u) som borde vara 0
-    jac = minjac(@f, u); %jacobian mumbo-jumbo
+    F = f(u); % Beräknar f(u) som bör gå mot 0
+    jac = minjac(@f, u); % jacobian-beräkning
    
     % Standard newton-grejer
     du = -jac\F;
     dunorm = norm(du, inf)
-    u = u+du;
-    i = i+1;
+    u = u + du;
+    i = i + 1;
 end
-i
+
 res = u;
 
 end
