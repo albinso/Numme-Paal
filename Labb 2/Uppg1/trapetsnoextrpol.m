@@ -12,7 +12,7 @@ function res = trapetsnoextrpol(a, b, step, symbol)
 i = a + step;
 res = symbol(a)/2;
 while(i < b)
-    if(abs(i - b) < (E-5)) % Felmarginalskontroll
+    if(abs(i - b) < (1E-5)) % Felmarginalskontroll
         warning('Bad step length or precision error')
         break
     end

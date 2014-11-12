@@ -7,6 +7,8 @@ function res = beziermun(t, yb, yc)
 % yb = styrpunkt B
 % yc = styrpunkt c
 
+t = t';
+
 % Bezierkurvans funktion
 k = [(0.5+t).^3, 3.*(0.5-t).*(0.5+t).^2, 3.*(0.5-t).^2.*(0.5+t), (0.5-t).^3];
 
