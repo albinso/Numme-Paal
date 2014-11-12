@@ -1,15 +1,20 @@
-
 function G = f(z)
-% res ska vara 0 n�r u �r r�tt funktion
-global x h start stop
-N=length(z);
+% * Funktionsbeskrivning
+% 'G' ska vara 0 när z är rätt funktion
+% ALBIN BAKLÄXA :D
 
-% z inneh�ller inte randv�rden, stoppa in dem h�r.
+% * Variabelbeskrivning
+% z = alla tal i ett intervall med en viss steglängd, dock ej randvärdena
+
+global x h start stop
+
+N = length(z);
+
+% Då z inte innehåller randvärden så stoppas de in här.
 u=[start; z; stop];
 
-% Den magiska koden som fixar allt
-G = (u(3:N+2) + u(1:N) - 2*u(2:N+1))/h^2 - x.*u(2:N+1).*(u(2:N+1)-1);
-
+% Beräkningen av funktionen
+G = (u(3:N+2) + u(1:N) - 2*u(2:N+1))/h^2 - x.^2.*u(2:N+1).*(u(2:N+1)-1);
 
 end
 
