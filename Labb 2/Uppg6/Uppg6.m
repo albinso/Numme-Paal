@@ -29,9 +29,9 @@ u0 = k * sqrt(h0 - hstar)/sqrt(C1);
 
 % Ritar upp kurvor utifrån dessa fyra A-värden
 for A = [1 2 4 10]
-    [X Y] = ode45(@f, [-5 10], [h0 u0]);
+    [X, Y] = ode45(@f, [-5 300], [h0 u0]);
     hold on;
-
     plot(X, Y(:,1), 'r') % Plotta höjden med avseende på tiden.
+    hold on;
     plot(X, Y(:,2), 'g') % Plotta u (vattenhastigheten i förbindelsen)
 end

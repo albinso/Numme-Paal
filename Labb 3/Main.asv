@@ -1,52 +1,80 @@
-t = [-4:0.1:12];
+t = [-8:0.05:12];
+global globalvariabledonotuse; globalvariabledonotuse=0;
 hold off;
-
+format long
 endpoints = [];
+subplot(2, 2, 3)
 for y=[0.2 0.6 1.0 1.4]
-    [T, Y] = ode45(@delta, t, [-4 y]);
-   % plot(Y(:,1), Y(:,2))
-    endpoints = [endpoints; Y(end,:,end)]; %Sätt in slutpunkterna i en vektor.
+    [T, XY] = ode45(@delta, t, [-4 y]);
+    plot(XY(:,1), XY(:,2))
+    if y==0.2
+        endpoint = XY(end, :); % Används för att hitta t i sektionen efter loopen.
+    end
     hold on;
 end
+% Hitta t så att grafen med start i (-4, 0.2) har samma x som den med start
+% i (-4, 1.4) har vid t=12
 xlabel('X position')
+op = odeset('Events', @evtfun);
+[T, XY] = ode45(@delta, [12:20], [endpoint(1), endpoint(2)], p);
 
+plot(XY(end, 1), XY(end, 2), 'O');
+T(end); 
+
+
+
+
+% POLYGONER
 points = package(-4, 1, 0.6, 20);
-plot(points(:,1), points(:,2), 'O')
-for point=points'
-    [T, XY] = ode45(@delta, t, [point(1) point(2)]);
-    plot(XY(:,1), XY(:,2))
+[T, XY] = calcanddrawpoints(t, points, @delta);
+areacurve20 = zeros(size(t));
+for i=1:length(t)
+    areacurve20(i) = polygonarea(XY(1, i, :), XY(2, i, :));
 end
-area = polygonarea(XY(:,1), XY(:,2))
 
-points = package(-4, 1, 0.6, 20);
-x = points(1,:)
-[T, XY] = ode45(@delta, t, [points(1,:) points(2,:)']);
-area = polygonarea(XY(:,1), XY(:,2))
+
+
+
+points = package(-4, 1, 0.6, 40);
+[T, XY] = calcanddrawpoints(t, points, @delta);
+areacurve40 = zeros(size(t));
+for i=1:length(t)
+    areacurve40(i) = polygonarea(XY(1, i, :), XY(2, i, :));
+end
+
+points = package(-4, 1, 0.6, 80);
+[T, XY] = calcanddrawpoints(t, points, @delta);
+areacurve80 = zeros(size(t));
+for i=1:length(t)
+    areacurve80(i) = polygonarea(XY(1, i, :), XY(2, i, :));
+end
+
+hold off
+subplot(1, 2, 1)
+hold on
+xlabel('x position (of the first point)')
+ylabel('area of polygon')
+plot(XY(1, :, 1), areacurve40, 'g')
+hold on
+plot(XY(1, :, 1), areacurve20, 'r')
+area = extrapolate(areacurve40, areacurve20);
+areabetter = extrapolate(areacurve80, areacurve40);
+
+plot(XY(1, :, 1), area)
+subplot(1, 2, 2)
+xlabel('x position (of the first point)')
+ylabel('area of polygon')
+title('
+hold on
+plot(XY(1, :, 1), area)
+plot(XY(1, :, 1), areabetter, 'r')
+%areadiff40 = abs(polygonarea(XY(:,1), XY(:,2)) - area);
+
 
 
 % Hitta t så att kurvan med start y=0.2 har samma x som den med start y=1.4
 % har vid t=12.
-h = 1E-1;
-targetx = endpoints(end,:,end)
-h = 1
-t = [12:h:20];
-dt = 10;
-endslow = endpoints(1,:)
 
-
-xs = ode45(@delta, t, [endslow(1)])
-%xs = [T XY(:,1)];
-prevx = -10;
-
-for tx=xs'
-    t = tx(1); x = tx(2)
-    if targetx < x && targetx >= prevx
-        %dostuff
-        ph = 1E-2;
-        [T, X] = ode45(@delta, [t-h:ph:t], [x])
-    end
-    prevx = x;
-end
     
 
 

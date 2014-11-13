@@ -7,5 +7,5 @@ mopt = odeset('RelTol', 1.E-6);
 
 % Plottar kurvorna (y och y')
 hold on;
-plot(X, Y(:,1)); % y
-plot(X, Y(:,2)); % y'
+plot(X, Y(:,1)); % y alt u1
+plot(X, Y(:,2)); % y' alt u2

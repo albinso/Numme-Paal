@@ -1,4 +1,4 @@
-function res = trapetsnoextrpol(a, b, step, symbol)
+function res = trapetsnoextrpol(a, b, step, f)
 % = Funktionsförklaring:
 % Trapetsregeln utan extrapolation.
 
@@ -8,19 +8,13 @@ function res = trapetsnoextrpol(a, b, step, symbol)
 % step = steglängd
 % symbol = funktionen
 
-% Trapetsregeln m h a iteration
-i = a + step;
-res = symbol(a)/2;
-while(i < b)
-    if(abs(i - b) < (1E-5)) % Felmarginalskontroll
-        warning('Bad step length or precision error')
-        break
-    end
-    res = res + symbol(i);
-    i = i + step;
-end
+% Trapetsregeln
+vals = f([a:step:b]);
+res = vals(1)/2;
+n = length(vals);
+res = res + sum(vals(2:end-1));
 
-res = res + symbol(b)/2;
+res = res + vals(end)/2;
 res = res * step;
 
 end

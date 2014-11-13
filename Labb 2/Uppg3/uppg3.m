@@ -1,6 +1,6 @@
 % Rensar fönstret så att enbart den ritade gubben kommer synas
 hold off;
-plot(0, 0);
+plot(0, 1);
 hold on;
 
 % Våra två intervall

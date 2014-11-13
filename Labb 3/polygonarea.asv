@@ -1,7 +1,20 @@
-function area = polygonarea(x, y)
+function parea = polygonarea(x, y)
+global i;
 
-x = [x(end) x x(1)];
-y = [y(end) y y(1)];
+n = length(x);
+x = x(:);
+y = y(:);
+
+x = [x(end); x; x(1)];
+y = [y(end); y; y(1)];
 
 
+parea = x(2:end-1).*(y(3:end)-y(1:end-2))/2
+length(p
+
+if mod(i, 10) == 0
+    plot(x, y, 'r')
+end
+i = i+1;
+%pause(0.1); % Gör grymt coola grejer
 

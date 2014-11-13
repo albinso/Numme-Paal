@@ -1,0 +1,6 @@
+function [value, isterminal, direction] = evtfun(t, xy)
+    % Avbryt ode45 när x=15.60 (antagligen överdriven prec
+    value = 15.598833260074112-xy(1);
+    isterminal = 1;
+    direction = 0;
+end

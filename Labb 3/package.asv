@@ -1,10 +1,8 @@
 function res = package(x, y, r, n)
-
+% Generates a package of 
 org_angle = 2*pi/n;
-res = zeros(n);
+res = [];
 for i=[1:n]
     angle = org_angle*i;
-    i
-    res(i) = [x+cos(angle)*r y+sin(angle)*r;
+    res = [res; x+cos(angle)*r y+sin(angle)*r];
 end
-res

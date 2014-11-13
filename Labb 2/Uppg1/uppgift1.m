@@ -20,6 +20,8 @@ X = x * ones(size(fi));
 Y = f * cos(fi);
 Z = f * sin(fi);
 mesh(X, Y, Z);
+%format long
+format compact
 
 disp(['    Step=0.1' '  Step=0.05', ' quad']);
-disp([volume volumebetter volumebest]);
+disp([volume-volumebest volumebetter-volumebest volumebest]);
