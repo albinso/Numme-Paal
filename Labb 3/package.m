@@ -1,7 +1,7 @@
 function res = package(x, y, r, n)
 global uppg;
 % Generates a package of particles based around (x, y)
-org_angle = 2*pi/n;
+org_angle = 2*pi/n; % The original angle
 res = zeros(n, 2);
 for i=[1:n]
     angle = org_angle*i;
