@@ -1,5 +1,5 @@
 function [T, AllXY] = calcanddrawpoints( t, points, func )
-% Returnerar en 3d-matris
+% Löser differentialekvationen func för ett givet intervall t och startpunkter points.
 AllXY = zeros(2, length(t), length(points));
 i=1;
 for point=points'
