@@ -8,6 +8,7 @@ y = y(:);
 x = [x(end); x; x(1)];
 y = [y(end); y; y(1)];
 
+% Beräknar polygonens area
 parea = abs(sum(x(2:end-1).*(y(3:end)-y(1:end-2))))/2;
 
 % Ritar var 40:de polygon
