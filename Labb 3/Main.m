@@ -40,21 +40,21 @@ end
 
 if uppg == 3 || uppg == 4
     points = package(-4, 1, 0.6, 20);
-    [T, XY] = calcanddrawpoints(t, points, @delta);
+    [T, XY] = calcpoints(t, points, @delta);
     areacurve20 = zeros(size(t));
     for i=1:length(t)
         areacurve20(i) = polygonarea(XY(1, i, :), XY(2, i, :));
     end
 
     points = package(-4, 1, 0.6, 40);
-    [T, XY] = calcanddrawpoints(t, points, @delta);
+    [T, XY] = calcpoints(t, points, @delta);
     areacurve40 = zeros(size(t));
     for i=1:length(t)
         areacurve40(i) = polygonarea(XY(1, i, :), XY(2, i, :));
     end
 
     points = package(-4, 1, 0.6, 80);
-    [T, XY] = calcanddrawpoints(t, points, @delta);
+    [T, XY] = calcpoints(t, points, @delta);
     areacurve80 = zeros(size(t));
     for i=1:length(t)
         areacurve80(i) = polygonarea(XY(1, i, :), XY(2, i, :));

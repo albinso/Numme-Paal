@@ -12,3 +12,6 @@ for i=[1:n]
         res(i, :) = [x+cos(angle)*r y+sin(angle)*r/(i/2)];
     end
 end
+if length(res) == 80
+    plot(res(:,1), res(:,2), 'g')
+end
