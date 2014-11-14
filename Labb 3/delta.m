@@ -1,4 +1,5 @@
 function res = delta(t, xy)
+% Derivatorna dx/dt och dy/dt respektive
 R=2;
 x = xy(1);
 y = xy(2);
