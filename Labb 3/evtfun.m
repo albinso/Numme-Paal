@@ -1,7 +1,6 @@
 function [value, isterminal, direction] = evtfun(t, xy)
-    % Avbryt ode45 när x=15.60 (antagligen överdriven precision här)
-    value = 15.598833260074112-xy(1);
-    value
-    isterminal = 1;
-    direction = 0;
+    % Avbryt ode45 när x=7.85 (antagligen överdriven precision här)
+    value = 7.851531824785027-xy(1); % Är noll när vi ska avbryta
+    isterminal = 1; % Signalera att vi ska avbryta vid event
+    direction = 0; % Oavsett vilken riktning kurvan har så ska eventet triggas.
 end

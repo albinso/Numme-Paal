@@ -11,7 +11,10 @@ y = [y(end); y; y(1)];
 parea = abs(sum(x(2:end-1).*(y(3:end)-y(1:end-2))))/2;
 
 % Ritar var 40:de polygon
-if mod(globalvariabledonotuse, 40) == 0
+if mod(globalvariabledonotuse, 40) == 0 && length(x) == 82 % Rita upp vart 40:e steg för polygonen med 80 hörn
+    subplot(2, 2, 3)
+    plot(x, y, 'r')
+    subplot(2, 2, 4)
     plot(x, y, 'r')
 end
 globalvariabledonotuse = globalvariabledonotuse + 1;

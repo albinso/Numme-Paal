@@ -1,4 +1,4 @@
-function [T, AllXY] = calcpoints( t, points, func )
+function [T, AllXY] = calcanddrawpoints( t, points, func )
 % Returnerar en 3d-matris
 AllXY = zeros(2, length(t), length(points));
 i=1;

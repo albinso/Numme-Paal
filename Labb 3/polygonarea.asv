@@ -1,20 +1,19 @@
 function parea = polygonarea(x, y)
-global i;
+global globalvariabledonotuse;
 
-n = length(x);
+% Omvandlar x och y till kolumnvektorer (1*1*n matriser tidigare)
 x = x(:);
 y = y(:);
 
 x = [x(end); x; x(1)];
 y = [y(end); y; y(1)];
 
+parea = abs(sum(x(2:end-1).*(y(3:end)-y(1:end-2))))/2;
 
-parea = x(2:end-1).*(y(3:end)-y(1:end-2))/2
-length(p
-
-if mod(i, 10) == 0
+% Ritar var 40:de polygon
+if mod(globalvariabledonotuse, 40) == 0 && length(x) == 82 % Rita upp vart 40:e steg för polygonen med 80 hörn
     plot(x, y, 'r')
+    subplot(2, 2, 4)
+    plot(x, 
 end
-i = i+1;
-%pause(0.1); % Gör grymt coola grejer
-
+globalvariabledonotuse = globalvariabledonotuse + 1;
