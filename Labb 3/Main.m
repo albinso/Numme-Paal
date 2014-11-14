@@ -3,12 +3,13 @@ global globalvariabledonotuse; globalvariabledonotuse=0;
 global uppg;
 hold off;
 format long
-uppg = 3;
+uppg = 4;
 if uppg == 3 ||uppg == 4
     subplot(2, 2, 3)
     hold on;
 end
 if uppg == 1 || uppg == 2 || uppg == 3 || uppg == 4
+    
     for y=[0.2 0.6 1.0 1.4]
         [T, XY] = ode45(@delta, t, [-4 y]);
         plot(XY(:,1), XY(:,2));
@@ -18,14 +19,15 @@ if uppg == 1 || uppg == 2 || uppg == 3 || uppg == 4
         end
         hold on;
     end
+    ylabel('Y position')
+    xlabel('X position')
 end
 
 if uppg == 2
     % Hitta t så att grafen med start i (-4, 0.2) har samma x som den med start
     % i (-4, 1.4) har vid t=11
     
-    ylabel('Y position')
-    xlabel('X position')
+    
     endpoint;
     op = odeset('Events', @evtfun);
     [T, XY] = ode45(@delta, [12:20], [endpoint(1) endpoint(2)], op);
